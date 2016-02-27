@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('navotron.apiWorkArea', ['navotron.cache'])
+angular.module('navotron.apiAnimals', ['navotron.cache'])
 
-.factory('workareas', function($http, cache) {
+.factory('animals', function($http, cache) {
 
     return {
 

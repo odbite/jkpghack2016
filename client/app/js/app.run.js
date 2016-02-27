@@ -35,22 +35,4 @@ angular.module('navotron.run', [
         api.users.logoutUser();
         $state.go('root.login');
     });
-
-    // Check if user role can access the view accoring to its group
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-        var authorizedRoles = next.data.authorizedRoles;
-
-        if (!api.users.isAuthorized(authorizedRoles)) {
-            event.preventDefault();
-
-            if (api.users.isAuthenticated()) {
-                // user is not allowed
-                $rootScope.$broadcast(AUTH_EVENTS.notAuthorized, {});
-            }
-            else {
-                // user is not logged in
-                $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated, {});
-            }
-        }
-    });
 });

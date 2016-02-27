@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navotron.config', [
-    'navotron.notification',
+    'navotron.notification'
 ])
 
 .config(function($httpProvider, notificationProvider, oauth2Provider) {

@@ -1,19 +1,11 @@
 'use strict';
 
 angular.module('navotron.api', [
-    'navotron.apiKeywords',
-    'navotron.apiNodes',
-    'navotron.apiUsers',
-    'navotron.apiWorkArea',
-    'navotron.apiCredits',
+    'navotron.apiAnimals',
 ])
 
-.factory('api', function(workareas, nodes, users, keywords, credits) {
+.factory('api', function(animals) {
     return {
-        workareas: workareas,
-        nodes: nodes,
-        users: users,
-        keywords: keywords,
-        credits: credits,
+        animals: animals,
     };
 });

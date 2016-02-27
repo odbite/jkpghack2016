@@ -1,0 +1,32 @@
+{
+    "globalstrict": true,
+    "debug": true,
+    "globals": {
+        "console": true,
+        "document": true,
+        "Urls": true,
+        "N1": true,
+        "N5": true,
+        "SV1": true,
+        "$": true,
+        "angular": false,
+        "Math": false,
+        "google": false
+    },
+    "predef": [
+        "jasmine",
+        "describe",
+        "xdescribe",
+        "before",
+        "beforeEach",
+        "after",
+        "afterEach",
+        "it",
+        "xit",
+        "it",
+        "inject",
+        "expect",
+        "spyOn",
+        "module"
+    ]
+}

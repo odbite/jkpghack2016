@@ -7,22 +7,18 @@ angular.module('navotron', [
     'navotron.config',
     'navotron.run',
     'navotron.constants',
-    'navotron.credits',
     'navotron.datadef',
     'navotron.directives',
-    'navotron.login',
     'navotron.navbar',
     'navotron.notification',
-    'navotron.resolver',
     'navotron.routes',
     'navotron.session',
-    'navotron.workAreaSettings',
     'navotron.templates',
-    'navotron.workArea',
-    'navotron.workAreaList',
+    'navotron.knowme',
 
     'angular-extend-promises',
     'ngAnimate',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'uiGmapgoogle-maps'
 ]);

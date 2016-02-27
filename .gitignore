@@ -3,5 +3,7 @@ fabfile.py
 database.db
 database_test.db
 server/database
+bower_components/
+node_modules/
 *.log
 *.pyc
