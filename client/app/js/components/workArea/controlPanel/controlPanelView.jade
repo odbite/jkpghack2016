@@ -1,0 +1,31 @@
+.row.control-panel
+  .col-md-6
+    ul.nav.navbar-nav
+      li.site-url(ng-show="workArea.site_url")
+        modify-field(
+          field="workArea.site_url"
+          on-save="patchWorkArea(workArea, {'site_url': newVal})"
+        )
+      li.site-url(ng-show="workArea.site_url === undefined")
+        | Loading...
+
+      li.changes-saved-text
+        .span(ng-show="editing()")
+          | Editing...
+        .span(ng-hide="editing()")
+          | All changes saved
+
+  .col-md-6
+    ul.nav.navbar-nav.pull-right
+      li
+        a.navbar-button
+          .fa.fa-link
+          | &nbsp; Share
+      li
+        .navbar-button-slider
+          a.left(ui-sref-active="active" ui-sref="root.workArea.navigation")
+            | Navigation
+          a.middle(ui-sref-active="active" ui-sref="root.workArea.preview")
+            | Preview
+          a.right(ui-sref-active="active" ui-sref="root.workArea.keywords")
+            | Keywordlist

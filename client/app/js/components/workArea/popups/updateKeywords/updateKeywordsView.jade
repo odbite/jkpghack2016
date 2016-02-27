@@ -1,0 +1,61 @@
+.modal-header
+  h2
+    | Update search volumes
+    i.fa.fa-close.pull-right(ng-click="cancel()")
+      | &nbsp;
+
+.update-keywords(ng-controller="creditController as ctrl")
+  .modal-body
+    .row.credits-bar.text-center
+      .col-md-2
+      .col-md-4
+        i.fa.fa-usd
+        | &nbsp; Credits to pay: &nbsp;
+        .label.label-danger
+          | {{ctrl.creditFactory.estimateCost(keywords.length)}}
+
+      .col-md-4
+        i.fa.fa-credit-card
+        | &nbsp; Your current credits: &nbsp;
+        .label.label-primary(ng-hide="ctrl.creditFactory.searchDisabled(keywords.length)")
+          | {{ctrl.creditFactory.units}}
+        .label.label-warning(ng-show="ctrl.creditFactory.searchDisabled(keywords.length)")
+          | {{ctrl.creditFactory.units}}
+      .col-md-2
+
+  .modal-body
+    form(name="keywordForm")
+
+      .row
+        .col-md-12
+          | What do you want updated?
+          .radio-buttons
+            button.btn.btn-default(ng-click="updateCurrentKeywords()" ng-class="{'btn-primary' : isCurrentUpdateChoice('current')}")
+              | Current keywords
+            button.btn.btn-default(ng-click="updateAllKeywords()" ng-class="{'btn-primary' : isCurrentUpdateChoice('all')}")
+              | All keywords
+
+      br
+
+      .row
+        .col-md-12
+          table.table.table-hover.table-bordered
+            thead
+              tr
+                th.col-md-6
+                  | Keyword
+                th
+                  | Search volume (monthly)
+
+            tbody
+              tr(ng-repeat="k in keywords | orderBy:'keyword'")
+                td
+                  | {{ k.keyword }}
+                td
+                  | {{ k.volume }}
+
+.modal-footer(ng-controller="creditController as ctrl")
+  a.btn.btn-primary(ui-sref="root.credits" ng-click="cancel()")
+    | Buy more credits
+  button.btn.btn-success(ng-click="updateKeywordVolume()" ng-disabled="ctrl.creditFactory.searchDisabled(keywords.length)")
+    | Update keywords

@@ -1,0 +1,33 @@
+nav.navbar.navbar-default.navbar-custom(role="navigation")
+  .container-fluid(ng-controller="navbarController as ctrl")
+    .navbar-header.col-md-2
+      a.navbar-brand(ui-sref="root")
+        span(style="color: #56AAF4")
+          | Nav
+        span(style="color: #00B500; margin: 4px;")
+          | o
+        span(style="color: #56AAF4")
+          | tron
+
+    ul.nav.navbar-nav(ng-if="ctrl.users.isAuthenticated()")
+      li(ng-class="{'activeMenu': ctrl.includes('root.workArea')}")
+        a(ui-sref="root.workArea.navigation({workAreaId: ctrl.workAreaHelper.getActiveWorkarea().hash_id})")
+          | Workarea
+
+      li(ui-sref-active="activeMenu")
+        a(ui-sref="root.workAreaSettings")
+          | Settings
+
+    ul.nav.navbar-nav.navbar-right
+      li(ui-sref-active="activeMenu" ng-if="ctrl.users.isAuthenticated()")
+        a(ui-sref="root.credits")
+          i(class="fa fa-credit-card")
+          =" "
+          | Credits ({{ ctrl.creditFactory.units }})
+      li(ng-hide="ctrl.users.isAuthenticated()" ui-sref-active="activeMenu")
+        a(ui-sref="root.login")
+          i.fa.fa-user
+          span
+            | &nbsp; Log in
+      li(ng-show="ctrl.users.isAuthenticated()")
+        control-box

@@ -1,0 +1,10 @@
+span(ng-hide="editField" ng-click="edit()")
+  | {{ field }}
+input.form-control.input-sm(
+  type="{{ type }}"
+  ng-show="editField"
+  ng-model="newValue"
+  ng-blur="onBlur()"
+  to-select="editField"
+  on-blur="save()"
+  on-enter-press="save()")

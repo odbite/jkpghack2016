@@ -1,0 +1,50 @@
+popup-box
+  pb-button
+    .pull-right.icon
+      i.fa.fa-caret-down.fa-2x
+
+    .pull-right.text
+      | {{ users.getUsername() }}
+      br
+      | {{ (getActiveWorkArea().site_url) ? getActiveWorkArea().site_url : '(no workarea selected)' }}
+  pb-panel
+    .row.user-info
+      .col-md-12
+        | {{ users.getUsername() }}
+      .col-md-12
+        a(ui-sref="root.settings")
+          | Account settings
+
+    .row.button-bar
+      .col-md-12
+        button.btn.btn-primary.btn-sm(ui-sref="root.workArea.navigation")
+          | Add new Workarea
+
+        button.btn.btn-primary.btn-sm.pull-right(ui-sref="root.login" ng-click="users.logoutUser()")
+          | Log out
+
+    .row.workarea-list
+      .col-md-12
+        h3
+          i.fa.fa-list
+          | &nbsp;
+          | Workareas
+
+      .col-md-12
+        .input-group.input-group-sm
+          span.input-group-addon
+            .fa.fa-search
+          input.form-control(type="text" ng-model="search")
+
+      .col-md-12
+        ul.list-unstyled
+          li(ng-repeat="wa in workareas | filter:{$:search}"
+             ng-class="{'active' : (wa.hash_id === getActiveWorkArea().hash_id)}")
+            a(ui-sref="root.workArea.navigation({workAreaId: wa.hash_id})"
+              ui-sref-opts="{reload: true}")
+              | {{ wa.site_url }}
+
+    .row.button-bar
+      .col-md-12
+        a(ui-sref="root.workAreaList" ui-sref-opts="{reload: true}")
+          | Show all workareas

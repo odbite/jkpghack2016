@@ -1,0 +1,41 @@
+{
+  "name": "Navotron",
+  "description": "A tool to help people build a SEO frriendly navigation.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ownbite/navotron",
+  "license": "MIT",
+  "private": true,
+  "main": [
+    "./app/dist/app.min.js",
+    "./app/dist/app.min.css"
+  ],
+  "ignore": [
+    "node_modules/",
+    "app/bower_components/",
+    "app/dist/bower.js",
+    "app/dist/main.min.css",
+    "app/dist/main.min.js"
+  ],
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-animate": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-loader": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "jquery": "1.11.x",
+    "jquery-ui": "1.11.x",
+    "angular-ui-tree": "master",
+    "angular-ui-router": "0.2.x",
+    "angular-bootstrap": "0.13.x",
+    "bootstrap": "3.3.4",
+    "html5-boilerplate": "5.2.x",
+    "angular-local-storage": "0.2.x",
+    "angular-extend-promises": "1.0.0-rc.3",
+    "angular-smart-table": "~2.1.1",
+    "angular-pageslide-directive": "~1.0.4",
+    "angucomplete-alt": "~1.1.0"
+  },
+  "resolutions": {
+    "angular": "1.4.x"
+  }
+}

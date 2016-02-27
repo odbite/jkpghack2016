@@ -1,0 +1,6 @@
+.notification-container
+  .alert(ng-repeat="alert in messages" ng-class="alert.alertClass" ng-show="$index === 0")
+    | {{ alert.message }}
+    button.close(type="button" ng-click="messages.splice($index, 1)")
+      span(aria-hidden="true") &times;
+      span.sr-only Close

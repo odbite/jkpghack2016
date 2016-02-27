@@ -1,0 +1,22 @@
+.container-fluid.node-container(ng-controller="nodeAreaController as ctrl")
+
+  .row.text-center.parent-node-cont
+    node-parent(node="nodeParent"
+                work-area="workArea"
+                add-sub-item="ctrl.nodeAreaFactory.addNewTopNode(workArea.hash_id, subNodes, index);")
+
+  .row
+    span(ng-repeat="node in subNodes")
+      div(ng-class="node.length === 0 ? 'node-col-small' : 'node-col'")
+        .add-sub-item-cont(ng-if="node.length === 0"
+                           ng-mouseover="showAddButton = true"
+                           ng-mouseleave="showAddButton = false")
+          .add-subitem(ng-show="showAddButton"
+                       ng-click="ctrl.nodeAreaFactory.addNewTopNode(workArea.hash_id, subNodes, $index); $event.stopPropagation();")
+            | Add page
+
+  .row
+    span(ng-repeat="node in subNodes")
+      div(ng-class="node.length === 0 ? 'node-col-small' : 'node-col'")
+        node-tree(nodes="node"
+                  work-area="workArea")

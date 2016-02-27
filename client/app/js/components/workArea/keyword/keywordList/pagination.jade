@@ -1,0 +1,6 @@
+
+nav(ng-if="pages.length >= 2")
+  ul(class="pagination")
+    li(ng-repeat="page in pages" ng-class="{active: page===currentPage}" class="ng-scope")
+      a(ng-click="selectPage(page)" class="ng-binding")
+        | {{ page }}

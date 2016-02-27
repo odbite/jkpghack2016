@@ -1,0 +1,51 @@
+.row.smart-table(ng-controller="keywordListController as ctrl")
+  div(st-pipe="ctrl.keywordListFactory.keywords.callServer" st-table="displayed")
+
+    .btn-group-sm.menu-bar.col-md-12
+      .row
+        .col-md-9
+          button.btn.btn-default
+            st-select-all(all="ctrl.keywordListFactory.keywords.results")
+
+          button.btn.btn-default(
+            type="button"
+            ng-click="ctrl.keywordListFactory.removeKeywords()")
+            i.fa.fa-trash
+            | &nbsp; Delete
+
+          .vertical-divider
+
+          button.btn.btn-default(
+            type="button"
+            ng-click="ctrl.keywordListFactory.addKeywords()")
+            i.fa.fa-plus
+            | &nbsp; Add
+
+        .col-md-3
+          input.form-control.pull-right(st-search="search" placeholder="Search for keyword")
+
+    table.table
+      thead
+        tr.head-titles
+          th
+          th(st-sort="keyword")
+            strong
+              | Keywords
+          th.text-right(st-sort="volume")
+            strong
+              | Search Volume
+          th
+
+      tbody(ng-class="{ cloak : ctrl.keywordListFactory.keywords.loading }")
+        tr(ng-repeat="row in ctrl.keywordListFactory.keywords.results")
+          td.col-md-1.text-center
+            st-select(row="row")
+          td.col-md-7
+            | {{ row.keyword }}
+          td.col-md-3.text-right
+            | {{ row.volume | number }}
+          td.col-md-1
+
+      tfoot
+        tr
+          td.text-center(colspan="4" st-pagination="" st-displayed-pages="ctrl.keywordListFactory.keywords.numberOfPages")

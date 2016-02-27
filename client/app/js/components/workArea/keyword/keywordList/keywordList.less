@@ -1,0 +1,53 @@
+
+.smart-table {
+
+    .cloak {
+        opacity: 0.4;
+    }
+
+    .st-selected {
+        background-color: #EEE;
+    }
+
+    .vertical-divider {
+        background-color: #CACACA;
+        margin: 0 15px;
+        padding: 14px 1px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+
+    .pagination {
+        a {
+            cursor: pointer;
+        }
+    }
+
+    .head-titles {
+        cursor: pointer;
+
+        .st-sort-descent:before {
+            content: '\25BC';
+        }
+
+        .st-sort-ascent:before {
+            content: '\25B2';
+        }
+    }
+
+    .menu-bar {
+        padding: 6px;
+        border: solid 1px #CCC;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+
+        button {
+            &:focus, &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+}
+

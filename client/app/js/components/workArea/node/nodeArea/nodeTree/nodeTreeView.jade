@@ -1,0 +1,9 @@
+div(ui-tree="treeOptions"
+    data-empty-place-holder-enabled="false"
+    ng-controller="nodeTreeController as ctrl")
+
+  ol(ui-tree-nodes
+     ng-model="nodes"
+     id="tree-root")
+    li(ng-repeat="node in nodes"
+       ui-tree-node ng-include="'js/components/workArea/node/nodeArea/nodeTree/nodeTreeItemView.jade'")

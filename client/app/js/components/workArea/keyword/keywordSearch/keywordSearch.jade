@@ -1,0 +1,40 @@
+.row
+  .well.col-md-12
+    .col-md-6
+      p
+        | #[strong Enter keywords here (one keyword per line)]
+
+      textarea.form-control(rows="7")
+
+    .col-md-6
+      p
+        | #[strong Settings for search]
+
+      p
+        | Country: <kbd>{{ activeWorkarea.country }}</kbd>
+      p
+        | Month: <kbd>{{ searchMonth | date:'MMM yyyy'}}</kbd>
+
+      .well.well-sm.col-md-12
+
+        .col-md-6
+          .radio
+            label
+              input(type="radio" name="radioTime" checked="checked")
+              | Exact keyword volumes only
+
+          .radio
+            label
+              input(type="radio" name="radioTime")
+              | Get keyword volumes with related words
+
+        .col-md-6
+          .checkbox
+            label
+              input(type="checkbox" name="checkboxTime")
+              | Competition metrics
+
+    .col-md-12.text-right
+      | This search will cost you #[strong 12 credits] &nbsp;
+      button.btn.btn-success
+        | Search

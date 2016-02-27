@@ -1,0 +1,27 @@
+.col-md-12.preview
+  .col-md-4.logo
+    | Logo
+  .col-md-8.info
+    .pull-right.text-right
+      | This marks a&nbsp;
+      span.primary-keyword
+        |  primary keyword
+      br
+      | And this marks a&nbsp;
+      span.secondary-keyword
+        |  secondary keyword
+
+  .col-md-12.navbar.navbar-preview
+    ul.nav.navbar-nav(ng-repeat="node in nodes")
+      li
+        a(ng-click="setParent(node); setActiveNode(node);"
+          ng-class="{ 'active' : node.id === parentNode.id }")
+          | {{ node.name }}
+
+  .col-md-4
+    ul.nav.nav-pills.nav-stacked(ng-model="childNodes")
+      li(ng-repeat="node in childNodes"
+         ng-include="'js/components/workArea/preview/previewPage/previewPageItem.jade'")
+
+  .col-md-8
+    preview-text(node="activeNode")

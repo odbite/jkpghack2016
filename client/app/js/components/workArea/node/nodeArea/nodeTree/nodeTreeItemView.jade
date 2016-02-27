@@ -1,0 +1,42 @@
+.col-md-12.cloak(ng-show="node.lock")
+
+.tree-node(class="level-{{ this.depth() }}"
+           ng-click="setActiveNode(node)"
+           ng-mouseover="ctrl.nodeTreeFactory.showEditButtons(true, node)"
+           ng-mouseleave="ctrl.nodeTreeFactory.showEditButtons(false, node)")
+
+  .pull-left.tree-handle(ui-tree-handle
+                         ng-show="node.showEditButtons")
+    span.fa.fa-arrows
+
+  .tree-node-content.form-inline
+    i.fa.toggle(
+      data-nodrag
+      ng-click="toggle(this); $event.stopPropagation();"
+      ng-show="ctrl.nodeTreeFactory.haveChildren(node);"
+      ng-class="{'fa-toggle-right': collapsed, 'fa-toggle-down': !collapsed}")
+
+    modify-field.edit-name(
+      field="node.name"
+      on-save="patchNode(workArea, node, {'name': newVal})"
+      on-blur="ctrl.nodeTreeFactory.showEditButtons(false, node);")
+
+    i.fa.fa-remove.fa-border.remove-item.pull-right(
+      data-nodrag
+      ng-click="deleteNode(this, node); $event.stopPropagation();"
+      ng-show="node.showEditButtons")
+
+
+    .add-subitem(ng-show="node.showEditButtons"
+                 ng-click="ctrl.nodeTreeFactory.addSubNode(node.id, node.name, node.children, workArea.hash_id);")
+      | Add subpage
+
+
+ol(ui-tree-nodes
+   ng-model="node.children"
+   ng-class="{hidden: collapsed}")
+
+  li(ng-repeat="node in node.children"
+     ui-tree-node
+     ng-include="'js/components/workArea/node/nodeArea/nodeTree/nodeTreeItemView.jade'"
+     ng-hide="node.hidden")

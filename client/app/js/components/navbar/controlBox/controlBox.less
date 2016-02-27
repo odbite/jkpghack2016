@@ -1,0 +1,76 @@
+.ub-button {
+    display: inline-block;
+    cursor: pointer;
+
+    .icon {
+        margin: 7px 18px;
+    }
+
+    .text {
+        text-align: right;
+    }
+}
+
+.ub {
+    position: relative;
+
+    .row {
+        margin: 0;
+    }
+
+    .window {
+        background: #ffffff;
+        border: 2px solid #bbbbbb;
+        position: absolute;
+        top: 0;
+        right: 14px;
+        width: 450px;
+        z-index: 9999;
+        box-shadow: 0 0 35px -14px;
+    }
+
+    .user-info {
+        padding: 10px 0;
+        border-bottom: 1px solid #CCC;
+    }
+
+    .button-bar {
+        padding: 10px 0;
+        background-color: #EEE;
+    }
+
+    .workarea-list {
+        padding: 10px 0;
+        background-color: #E2E2E2;
+        border-top: 1px solid #CCC;
+        border-bottom: 1px solid #CCC;
+
+        ul {
+            display: block;
+            white-space: nowrap;
+            overflow: scroll;
+            overflow-x: hidden;
+            height: 140px;
+
+            li {
+                padding: 10px;
+                cursor: pointer;
+
+                &.active, &:focus, &:hover {
+                    background-color: #EEE;
+                }
+            }
+        }
+
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 12px;
+            background: #DFDFDF;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #666;
+        }
+
+    }
+}

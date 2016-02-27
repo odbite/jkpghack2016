@@ -1,0 +1,42 @@
+.row
+  .col-md-12.workarea-settings(ng-controller="settingsController as ctrl")
+    form(name="workAreaSettings")
+
+      .col-md-6(ng-show="ctrl.settingsFactory.showSettings()")
+        p
+          | Name of workarea &nbsp;
+
+          i.fa.fa-question.fa-border(
+            popover="Needs to enter a domain name i.e. http://example.se"
+            popover-trigger="mouseenter")
+
+          input.form-control(
+            type="url"
+            name="site_url"
+            ng-model="ctrl.settingsFactory.workArea.site_url"
+            ng-class="{ 'has-error': ctrl.formFactory.fieldErrorOrRequired(workAreaSettings.site_url) }"
+            required)
+
+        p
+          | Search language &nbsp;
+          i.fa.fa-question.fa-border(
+            popover="What language to do keyword searches on."
+            popover-trigger="mouseenter")
+
+          select.form-control(
+            name="country"
+            ng-model="ctrl.settingsFactory.workArea.country"
+            ng-class="{ 'has-error': ctrl.formFactory.fieldErrorOrRequired(workAreaSettings.country) }"
+            required)
+            option
+              | GLOBAL
+            option
+              | SE
+
+        p
+          button.btn.btn-primary(ng-click="ctrl.settingsFactory.saveWorkarea()")
+            | Save changes
+
+      .col-md-6(ng-hide="ctrl.settingsFactory.showSettings()")
+        h2
+          | Please select a workarea
