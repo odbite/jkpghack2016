@@ -1,0 +1,7 @@
+SECRET
+fabfile.py
+database.db
+database_test.db
+server/database
+*.log
+*.pyc
